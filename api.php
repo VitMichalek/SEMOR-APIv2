@@ -79,5 +79,25 @@ class SEMOR{
 		//Výpis všech projektù pro daný token
 		return SEMOR::send(SEMOR::$server."GetProjectList","{}","G");
 	}
+
+	static function PutKeyword($pole){
+		//Založení
+		/*
+		$pole["idp"] - ID projektu
+		$pole["keyword"][] - pole klíèových slov
+		$pole["keyword"][0][0] = "slovo";
+		$pole["keyword"][0][1] = "A";
+		$pole["keyword"][0][2] = 28;
+		$pole["keyword"][0][3] = array("stitek","neco2");
+		$pole["keyword"][1][0] = "slovo 2";
+		$pole["keyword"][1][1] = "A";
+		$pole["keyword"][1][2] = 7;
+		$pole["keyword"][1][3] = array();
+		//frekvence mìøení (28 - 1x za 28 dní, 14 - 1x za 14 dní, 7 - každý týden, 1 - každý den)
+		Pokud bude dodateènì vložené klíèové slov již v systému, bude jeho nastaveni frekvence mìøení/aktivnita/štítky nastaveny dle posledního zaslání
+		
+		*/
+		return SEMOR::send(SEMOR::$server."PutKeyword",SEMOR::Data($pole));
+	}
 }
 ?>
