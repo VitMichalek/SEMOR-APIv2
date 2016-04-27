@@ -74,5 +74,10 @@ class SEMOR{
 		*/
 		return SEMOR::send(SEMOR::$server."PutProject",SEMOR::Data($pole));
 	}
+
+	static function GetProjectList(){
+		//Výpis všech projektù pro daný token
+		return SEMOR::send(SEMOR::$server."GetProjectList","{}","G");
+	}
 }
 ?>
