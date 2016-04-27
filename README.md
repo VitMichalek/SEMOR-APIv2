@@ -5,10 +5,7 @@
 
 #Seznam funkcí:
 
-##putProject
-<hr>
-Založí nový projekt do systému
-
+##PutProject
 ##GetProjectList
-<hr>
-Vypíše všechny projekty v systému
+##MeasureProject
+##PutKeywords

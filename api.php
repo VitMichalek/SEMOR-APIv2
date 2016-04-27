@@ -75,6 +75,16 @@ class SEMOR{
 		return SEMOR::send(SEMOR::$server."PutProject",SEMOR::Data($pole));
 	}
 
+	static function MeasureProject(){
+		/*
+		Využívá se jen pro projekty typu R - mìøení na vyžádání
+		$pole["idp"] - ID projektu
+
+		vrací informace o startu mìøení
+		*/
+		return SEMOR::send(SEMOR::$server."MeasureProject",SEMOR::Data($pole));
+	}
+
 	static function GetProjectList(){
 		//Výpis všech projektù pro daný token
 		return SEMOR::send(SEMOR::$server."GetProjectList","{}","G");
