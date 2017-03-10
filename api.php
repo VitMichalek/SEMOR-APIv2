@@ -73,6 +73,9 @@ class SEMOR{
 						sk - slovenky
 						de - nemecky
 						pl - polsky
+						
+						
+		//vrací ID projektu, pro další komunikace
 		*/
 		return SEMOR::send(SEMOR::$server."PutProject",SEMOR::Data($pole));
 	}
@@ -93,7 +96,7 @@ class SEMOR{
 	}
 
 	static function PutKeyword($pole){
-		//Založení
+		//Založení/Update slov
 		/*
 		$pole["idp"] - ID projektu
 		$pole["keyword"][] - pole klíèových slov
@@ -101,6 +104,7 @@ class SEMOR{
 		$pole["keyword"][0][1] = "A"; // stav A- aktivni, N-nekativni
 		$pole["keyword"][0][2] = 28; // frekvence mìøení
 		$pole["keyword"][0][3] = array("stitek","neco2"); // štítky
+		$pole["keyword"][0][4] = 5;// vaše interní ID pro klíèové slovo, pres toho ID mùžete pak volat statistiky pro jednotlivá slova
 		$pole["keyword"][1][0] = "slovo 2";
 		$pole["keyword"][1][1] = "A";
 		$pole["keyword"][1][2] = 7;
@@ -111,5 +115,44 @@ class SEMOR{
 		*/
 		return SEMOR::send(SEMOR::$server."PutKeyword",SEMOR::Data($pole));
 	}
+	
+	static function GetProjectIndex($pol){
+		//Vrací informace o indexovaných stránkách
+		/*
+		$pole["idp"] - ID projektu
+		$pole["datum_od"]  = "YYYY-MM-DD"; 
+		$pole["datum_do"]  = "YYYY-MM-DD";
+		pokud nejsou datumy nastaveny,vybere se posledních 30 dni
+		*/
+		
+		return SEMOR::send(SEMOR::$server."GetProjectIndex",SEMOR::Data($pole),"G");
+	}
+	
+	static function GetProjectKeys($pole){
+		//Základní statistiky o klíèových slovech po posledním mìøení
+		// datum mereni,pozice, vstupni stranka,stitky
+		/*
+		$pole["idp"] - ID projektu
+		
+		*/
+		return SEMOR::send(SEMOR::$server."GetProjectKeys",SEMOR::Data($pole));
+	}
+	
+	static function GetKeywordStat($pole){
+		//Vrátí pozice pro každý den mìøení pro 1 vybrané slovo
+		/*
+		$pole["idp"] - ID projektu
+		$pole["idk"] - ID klíèového slova ze SEMOR.cz
+			nebo
+		$pole["idki"] - Vaše interní ID
+		$pole["datum_od"]  = "YYYY-MM-DD";
+		$pole["datum_do"]  = "YYYY-MM-DD";
+		pokud nejsou datumy nastaveny,vybere se posledních 30 dni
+		
+		*/
+		return SEMOR::send(SEMOR::$server."GetKeywordStat",SEMOR::Data($pole),"G");
+	}
+	
+	
 }
 ?>
