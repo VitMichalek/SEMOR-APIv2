@@ -2,7 +2,7 @@
 include "config.php";
 class SEMOR{
 	static $jsonOutput = false; //defaultne vraci vysledek jako JSON, false => vrací Array()
-	static $server = "https://www.semor.cz/api/"; 
+	static $server = "https://www.semor.cz/api/v2/"; 
 
 	public function __construct(){
 		SEMOR::testToken();
