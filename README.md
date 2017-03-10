@@ -9,3 +9,6 @@
 ##GetProjectList
 ##MeasureProject
 ##PutKeywords
+##GetProjectIndex
+##GetProjectKeys
+##GetKeywordStat
