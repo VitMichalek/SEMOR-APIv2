@@ -60,6 +60,8 @@ class SEMOR{
 	static function PutProject($pole){
 		/*
 		$pole["url"] - www projektu
+						seznam.cz - pro všechny subdomeny
+						neco.seznam.cz jen pro subdomenu neco
 		$pole["https"] - bìží na https A/N
 		$pole["typ"] - typ projektu 
 						S - mìøení každý den
@@ -75,12 +77,12 @@ class SEMOR{
 		return SEMOR::send(SEMOR::$server."PutProject",SEMOR::Data($pole));
 	}
 
-	static function MeasureProject(){
+	static function MeasureProject($pole){
 		/*
 		Využívá se jen pro projekty typu R - mìøení na vyžádání
 		$pole["idp"] - ID projektu
 
-		vrací informace o startu mìøení
+		Pokud se v dany den spusteni projekt nemeril zacnou se merit pozice, pokud se uz meril nebo meri vrati se o tom informace
 		*/
 		return SEMOR::send(SEMOR::$server."MeasureProject",SEMOR::Data($pole));
 	}
@@ -95,10 +97,10 @@ class SEMOR{
 		/*
 		$pole["idp"] - ID projektu
 		$pole["keyword"][] - pole klíèových slov
-		$pole["keyword"][0][0] = "slovo";
-		$pole["keyword"][0][1] = "A";
-		$pole["keyword"][0][2] = 28;
-		$pole["keyword"][0][3] = array("stitek","neco2");
+		$pole["keyword"][0][0] = "slovo"; // klíèové slovo
+		$pole["keyword"][0][1] = "A"; // stav A- aktivni, N-nekativni
+		$pole["keyword"][0][2] = 28; // frekvence mìøení
+		$pole["keyword"][0][3] = array("stitek","neco2"); // štítky
 		$pole["keyword"][1][0] = "slovo 2";
 		$pole["keyword"][1][1] = "A";
 		$pole["keyword"][1][2] = 7;
