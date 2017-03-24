@@ -3,6 +3,7 @@ include_once("SemorConfig.php");
 class SEMOR{
 	static $jsonOutput = false; //defaultne vraci vysledek jako JSON, false => vrací Array()
 	static $server = "https://www.semor.cz/api/v2/"; 
+	static $method = "P";
 
 	public function __construct(){
 		SEMOR::testToken();
@@ -42,7 +43,7 @@ class SEMOR{
 
 	static function Data($data){
 		if(is_array($data) && count($data)!=0){
-			if($this->method == "P"){
+			if(SEMOR::$method == "P"){
 				return json_encode($data);
 			}else{
 				$prop = array();
