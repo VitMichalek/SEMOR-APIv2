@@ -117,18 +117,6 @@ class SEMOR{
 		return SEMOR::send(SEMOR::$server."PutKeyword",SEMOR::Data($pole));
 	}
 	
-	static function GetProjectIndex($pol){
-		//Vrací informace o indexovaných stránkách
-		/*
-		$pole["idp"] - ID projektu
-		$pole["datum_od"]  = "YYYY-MM-DD"; 
-		$pole["datum_do"]  = "YYYY-MM-DD";
-		pokud nejsou datumy nastaveny,vybere se posledních 30 dni
-		*/
-		
-		return SEMOR::send(SEMOR::$server."GetProjectIndex",SEMOR::Data($pole),"G");
-	}
-	
 	static function GetProjectKeys($pole){
 		//Základní statistiky o klíèových slovech po posledním mìøení
 		// datum mereni,pozice, vstupni stranka,stitky
